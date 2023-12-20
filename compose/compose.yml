@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - ../testdata/mysql/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_PORT=3566
+      - MYSQL_DATABASE=YOUR_APPLICATION
+      - MYSQL_ROOT_PASSWORD=root@123
+      - TZ='Asia/Tokyo'
+    ports:
+      - "3566:3306"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
